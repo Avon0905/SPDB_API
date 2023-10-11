@@ -34,7 +34,7 @@ spdb.save = function(datalist = NA, savedir = getwd())
 {
 	cat("Checking if files are all available...")
 	cat("\n")
-
+	datalist = as.matrix(datalist)
 	data_info = spdb.info()
 	all_datalist = as.character(data_info$ID)
 	wrong_id = setdiff(datalist, all_datalist)
@@ -61,6 +61,7 @@ spdb.load = function(dataID)
 	cat("\n")
 
 	data_info = spdb.info()
+	dataID = as.character(dataID)
 	if(dataID %in% as.character(data_info$ID))
 	{
 		cat("Start loading data...")
